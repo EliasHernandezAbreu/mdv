@@ -27,6 +27,11 @@ public:
   ~Solution();
 
   /**
+  * Prints the solution to the standard output
+  */
+  void print() const;
+
+  /**
   * Gets the center of the points belonging to the solution
   * @returns An array with the centers of the points
   */
@@ -56,6 +61,7 @@ private:
   float* center;
   int size;
   bool* solution_points;
+  float total_distance;
 };
 
 # endif

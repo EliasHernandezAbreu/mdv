@@ -9,7 +9,9 @@
  */
 
 #include "solution.h"
+#include "point.h"
 #include "problem.h"
+#include <cstdio>
 
 Solution::Solution(const Problem* problem) {
   this->problem = problem;
@@ -22,6 +24,19 @@ Solution::~Solution() {
   if (solution_points != nullptr) delete[] solution_points;
 }
 
+void Solution::print() const {
+  for (int i = 0; i < problem->getSize(); i++) {
+    if (hasPoint(i)) {
+      printf("%d: [ ", i);
+      for (int d = 0; d < problem->getDimensions(); d++) {
+        printf("%5.2f ", problem->getPosition(i)[d]);
+      }
+      puts("]");
+    }
+  }
+  printf("Total distance = %.2f\n", total_distance);
+}
+
 float* Solution::getCenter() const {
   return center;
 }
@@ -32,6 +47,12 @@ bool Solution::hasPoint(int index) const {
 
 void Solution::addPoint(int index) {
   if (solution_points[index]) return;
+  for (int p = 0; p < problem->getSize(); p++) {
+    if (!solution_points[p]) continue;
+    total_distance += distanceBetween(problem->getDimensions(), 
+                                      problem->getPosition(p),
+                                      problem->getPosition(index));
+  }
   solution_points[index] = true;
   for (int d = 0; d < problem->getDimensions(); d++) {
     center[d] *= size;

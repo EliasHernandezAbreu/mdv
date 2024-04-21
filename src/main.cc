@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
   };
 
   Algorithm* solver = new Greedy();
-  Problem test_problem = Problem(test_files[1]);
+  Problem test_problem = Problem(test_files[0]);
   Solution* solution = solver->solve(&test_problem, 3);
+  solution->print();
 }

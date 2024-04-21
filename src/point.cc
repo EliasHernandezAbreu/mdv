@@ -8,6 +8,7 @@
  * @file Functions for treating with points
  */
 
+#include <cstdio>
 #include <math.h>
 
 #include "point.h"
@@ -21,3 +22,10 @@ float distanceBetween(int dimensions, const float* point1, const float* point2) 
   return distance;
 }
 
+void printPoint(int dimensions, const float* point) {
+  printf("[ ");
+  for (int d = 0; d < dimensions; d++) {
+    printf("%5.2f", point[d]);
+  }
+  printf(" ]");
+}

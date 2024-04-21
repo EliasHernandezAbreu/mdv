@@ -13,5 +13,7 @@
 
 // Calculates the distance between two points
 float distanceBetween(int dimensions, const float* point1, const float* point2);
+// Prints a point
+void printPoint(int dimensions, const float* point);
 
 #endif
