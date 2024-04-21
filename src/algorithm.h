@@ -19,9 +19,10 @@ public:
   /**
   * Solves a given problem
   * @param problem The problem to solve
+  * @param solution_size The amount of points to include in the solution
   * @returns The found solution to the problem
   */
-  virtual Solution* solve(const Problem* problem) const = 0;
+  virtual Solution* solve(const Problem* problem, int solution_size) const = 0;
 };
 
 #endif

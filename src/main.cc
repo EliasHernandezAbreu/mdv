@@ -8,12 +8,12 @@
  * @file Main file
  */
 
-#include <stdio.h>
-
+#include "algorithm.h"
+#include "greedy.h"
 #include "problem.h"
 
 int main(int argc, char** argv) {
-  char test_files[6][24] = {
+  const char test_files[6][24] = {
     "test/max_div_15_2.txt",
     "test/max_div_15_3.txt",
     "test/max_div_20_2.txt",
@@ -21,5 +21,8 @@ int main(int argc, char** argv) {
     "test/max_div_30_2.txt",
     "test/max_div_30_3.txt"
   };
+
+  Algorithm* solver = new Greedy();
   Problem test_problem = Problem(test_files[1]);
+  Solution* solution = solver->solve(&test_problem, 3);
 }

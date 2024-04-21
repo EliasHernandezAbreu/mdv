@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdexcept>
 
+#include "point.h"
 #include "problem.h"
 
 float readCommaFloat(FILE* input);
@@ -35,12 +36,7 @@ Problem::Problem(const char* file_path) {
   for (int i = 0; i < size; i++) {
     distances[i] = new float[size]();
     for (int j = 0; j < size; j++) {
-      float distance = 0;
-      for (int dim = 0; dim < dimensions; dim++) {
-        distance += powf(positions[i][dim] - positions[j][dim], 2);
-      }
-      distance = sqrtf(distance);
-      distances[i][j] = distance;
+      distances[i][j] = distanceBetween(dimensions, positions[i], positions[j]);
     }
   }
 }
@@ -57,6 +53,22 @@ Problem::~Problem() {
       delete[] distances[i];
     delete[] distances;
   }
+}
+
+int Problem::getSize() const {
+  return size;
+}
+
+int Problem::getDimensions() const {
+  return dimensions;
+}
+
+const float* Problem::getPosition(int index) const {
+  return positions[index];
+}
+
+float Problem::distance(int from, int to) const {
+  return distances[from][to];
 }
 
 // Helper functions
