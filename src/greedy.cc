@@ -8,8 +8,6 @@
  * @file Greedy solver
  */
 
-#include <stdio.h>
-
 #include "greedy.h"
 #include "point.h"
 #include "problem.h"
@@ -33,7 +31,7 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
     float longest_distance = 999999;
     for (int point = 0; point < size; point++) {
       if (result->hasPoint(point)) continue;
-      float distance = distanceBetween(dimensions, problem->getPosition(longest_distance),
+      float distance = distanceBetween(dimensions, problem->getPosition(longest_distance_point),
                                        problem->getPosition(point));
       if (distance > longest_distance) {
         longest_distance = distance;
