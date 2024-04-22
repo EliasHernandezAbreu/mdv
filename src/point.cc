@@ -9,7 +9,7 @@
  */
 
 #include <cstdio>
-#include <math.h>
+#include <cmath>
 
 #include "point.h"
 

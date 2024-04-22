@@ -8,9 +8,7 @@
  * @file Problem class for representing problems
  */
 
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdio>
 #include <stdexcept>
 
 #include "point.h"

@@ -8,8 +8,6 @@
  * @file Greedy solver
  */
 
-#include <cstring>
-
 #include "greedy.h"
 #include "point.h"
 #include "problem.h"
@@ -21,7 +19,7 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
   Solution* result = new Solution(problem);
 
   // Initial center of all the points
-  float center[dimensions];
+  float* center = new float[dimensions];
   for (int dim = 0; dim < dimensions; dim++) {
     center[dim] = 0;
     for (int point = 0; point < size; point++) {
@@ -43,7 +41,10 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
       }
     }
     result->addPoint(longest_distance_point);
-    memcpy(center, result->getCenter(), dimensions * sizeof(float)); // reasign center
+    if (i == 0) { // run only on first iteration cause then it points to the center
+      delete[] center;
+      center = result->getCenter();
+    }
   }
   return result;
 }
