@@ -5,21 +5,26 @@
  * @author Elías Hernández Abreu
  * @since 21 / 4 / 2024
  *
- * @file Greedy solver
+ * @file Grasp solver with local searches
  */
 
-#ifndef GREEDY_H
-#define GREEDY_H
+#ifndef LOCAL_SEARCH_H
+#define LOCAL_SEARCH_H
 
 #include "algorithm.h"
 #include "problem.h"
 
-class Greedy: public Algorithm {
+class LocalSearchGrasp: public Algorithm {
 public:
+  /**
+   * Constructor
+   */
+  LocalSearchGrasp(int iterations, int rcl_size);
+
   /**
    * Destructor
    */
-  virtual ~Greedy() override {}
+  virtual ~LocalSearchGrasp() override {}
 
   /**
   * Solves a given problem
@@ -28,6 +33,12 @@ public:
   * @returns The found solution to the problem
   */
   virtual Solution* solve(const Problem* problem, int solution_size) const override;
+
+private:
+  int iterations;
+  int rcl_size;
 };
 
 #endif
+
+

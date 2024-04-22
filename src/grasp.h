@@ -5,21 +5,26 @@
  * @author Elías Hernández Abreu
  * @since 21 / 4 / 2024
  *
- * @file Greedy solver
+ * @file Grasp solver
  */
 
-#ifndef GREEDY_H
-#define GREEDY_H
+#ifndef GRASP_H
+#define GRASP_H
 
 #include "algorithm.h"
 #include "problem.h"
 
-class Greedy: public Algorithm {
+class Grasp: public Algorithm {
 public:
+  /**
+   * Constructor
+   */
+  Grasp(int iterations, int rcl_size);
+
   /**
    * Destructor
    */
-  virtual ~Greedy() override {}
+  virtual ~Grasp() override {}
 
   /**
   * Solves a given problem
@@ -28,6 +33,11 @@ public:
   * @returns The found solution to the problem
   */
   virtual Solution* solve(const Problem* problem, int solution_size) const override;
+
+private:
+  int iterations;
+  int rcl_size;
 };
 
 #endif
+

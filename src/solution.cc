@@ -98,3 +98,12 @@ char* Solution::getPointsString() const {
   }
   return result;
 }
+
+void Solution::copy(const Solution* other) {
+  this->problem = other->problem;
+  this->size = other->size;
+  this->total_distance = other->total_distance;
+  memcpy(this->center, other->center, sizeof(float) * problem->getDimensions());
+  // this->size is the amount of points in the solution, solution points has an entry for every point
+  memcpy(this->solution_points, other->solution_points, sizeof(bool) * problem->getSize());
+}

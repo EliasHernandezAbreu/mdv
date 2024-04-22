@@ -27,6 +27,12 @@ public:
   ~Solution();
 
   /**
+   * Copies another solution
+   * @param other The solution to copy
+   */
+  void copy(const Solution* other);
+
+  /**
   * Prints the solution to the standard output
   */
   void print() const;

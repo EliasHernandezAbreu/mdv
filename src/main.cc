@@ -20,5 +20,5 @@ int main(int argc, char** argv) {
     "test/max_div_30_3.txt"
   };
 
-  greedyTable(6, test_files);
+  allTables(6, test_files);
 }
