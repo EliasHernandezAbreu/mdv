@@ -8,12 +8,12 @@
  * @file Greedy solver
  */
 
+#include <cstring>
+
 #include "greedy.h"
 #include "point.h"
 #include "problem.h"
 #include "solution.h"
-#include <cstdio>
-#include <cstring>
 
 Solution* Greedy::solve(const Problem* problem, int solution_size) const {
   const int dimensions = problem->getDimensions();

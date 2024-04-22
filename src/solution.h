@@ -32,6 +32,18 @@ public:
   void print() const;
 
   /**
+  * Gets the total distance of the solution
+  * @returns The total distance
+  */
+  float getTotalDistance() const;
+
+  /**
+  * Get points as string
+  * @returns The points as a string
+  */
+  char* getPointsString() const;
+
+  /**
   * Gets the center of the points belonging to the solution
   * @returns An array with the centers of the points
   */
