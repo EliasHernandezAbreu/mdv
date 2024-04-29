@@ -19,7 +19,7 @@ public:
   /**
    * Constructor
    */
-  Tabu(int iterations, int rcl_size);
+  Tabu(int iterations, int rcl_size, int tabu_tenure);
 
   /**
    * Destructor
@@ -37,6 +37,7 @@ public:
 private:
   int iterations;
   int rcl_size;
+  int tabu_tenure;
 };
 
 #endif

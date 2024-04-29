@@ -13,6 +13,12 @@
 
 #include "problem.h"
 
+struct Movement {
+  float increment;
+  int in;
+  int out;
+};
+
 class Solution {
 public:
   /**
@@ -38,10 +44,22 @@ public:
   void print() const;
 
   /**
+   * Gets the problem of the solution
+   * @returns The problem of the solution
+   */
+  const Problem* getProblem() const { return problem; }
+
+  /**
   * Gets the total distance of the solution
   * @returns The total distance
   */
   float getTotalDistance() const;
+
+  /**
+  * Gets the real total distance of the solution
+  * @returns The real total distance
+  */
+  float confirmTotalDistance() const;
 
   /**
   * Get points as string
@@ -73,6 +91,20 @@ public:
   * @param index The position of the point to remove
   */
   void removePoint(int index);
+
+  /**
+  * Evaluates the given movement and returns its increment
+  * @param out The point to remove in the movement
+  * @param in The point to add in the movement
+  * @returns Its increment
+  */
+  float evaluateMovement(int out, int in);
+
+  /**
+  * Does the given movement()
+  * @param movement The movement to do 
+  */
+  void doMovement(Movement* movement);
 
 private:
   const Problem* problem;
