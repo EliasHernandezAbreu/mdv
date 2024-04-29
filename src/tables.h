@@ -8,6 +8,9 @@
  * @file Generator of tables for the solutions
  */
 
+#ifndef TABLES_H
+#define TABLES_H
+
 // Generate all tables
 void allTables(int test_amount, const char** test_files);
 // Generate tables for greedy algorithm
@@ -16,3 +19,7 @@ void greedyTable(int test_amount, const char** test_files);
 void localSearchGraspTable(int test_amount, const char** test_files);
 // Generate tables for greedy algorithm
 void graspTable(int test_amount, const char** test_files);
+// Generate tabu search tables
+void tabuTable(int test_amount, const char** test_files);
+
+#endif
