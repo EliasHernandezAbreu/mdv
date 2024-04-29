@@ -78,6 +78,7 @@ Solution* Grasp::solve(const Problem* problem, int solution_size) const {
     }
     delete current_result;
   }
+  best_result->reloadTotalDistance();
   return best_result;
 }
 

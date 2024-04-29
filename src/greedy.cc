@@ -46,5 +46,6 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
       center = result->getCenter();
     }
   }
+  result->reloadTotalDistance();
   return result;
 }

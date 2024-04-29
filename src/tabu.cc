@@ -105,6 +105,7 @@ Solution* Tabu::solve(const Problem* problem, int solution_size) const {
     delete[] tabu_table[i];
   }
   delete[] tabu_table;
+  best_solution->reloadTotalDistance();
   return best_solution;
 }
 

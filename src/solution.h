@@ -62,6 +62,11 @@ public:
   float confirmTotalDistance() const;
 
   /**
+   * Reloads the total distance to avoid precission problems
+   */
+  void reloadTotalDistance();
+
+  /**
   * Get points as string
   * @returns The points as a string
   */

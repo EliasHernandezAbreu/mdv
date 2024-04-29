@@ -109,6 +109,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
     }
   }
   
+  best_result->reloadTotalDistance();
   return best_result;
 }
 

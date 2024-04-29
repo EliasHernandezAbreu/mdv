@@ -102,6 +102,10 @@ float Solution::confirmTotalDistance() const {
   return distance;
 }
 
+void Solution::reloadTotalDistance() {
+  total_distance = confirmTotalDistance();
+}
+
 char* Solution::getPointsString() const {
   char* result = new char[3 * size + 1](); // 2 digits number + space + final null char
   for (int i = 0; i < problem->getSize(); i++) {
