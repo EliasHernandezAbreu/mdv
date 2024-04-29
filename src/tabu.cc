@@ -11,8 +11,10 @@
 // #define DEBUG
 
 #include <cmath>
-#include <cstdlib>
-#include <cstdio>
+#ifdef  DEBUG
+  #include <cstdlib>
+  #include <cstdio>
+#endif
 #include <cstring>
 
 #include "grasp.h"
