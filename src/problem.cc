@@ -14,7 +14,7 @@
 #include "point.h"
 #include "problem.h"
 
-float readCommaFloat(FILE* input);
+double readCommaFloat(FILE* input);
 
 // Constructor
 Problem::Problem(const char* file_path) {
@@ -22,17 +22,17 @@ Problem::Problem(const char* file_path) {
   if (input == nullptr) throw std::runtime_error("Input file not found");
   fscanf(input, "%d\n%d\n", &size, &dimensions);
   // Coordinates
-  positions = new float*[size];
+  positions = new double*[size];
   for (int point = 0; point < size; point++) {
-    positions[point] = new float[dimensions]();
+    positions[point] = new double[dimensions]();
     for (int coordinate = 0; coordinate < dimensions; coordinate++) {
       positions[point][coordinate] = readCommaFloat(input);
     }
   }
   // Distances
-  distances = new float*[size];
+  distances = new double*[size];
   for (int i = 0; i < size; i++) {
-    distances[i] = new float[size]();
+    distances[i] = new double[size]();
     for (int j = 0; j < size; j++) {
       distances[i][j] = distanceBetween(dimensions, positions[i], positions[j]);
     }
@@ -61,20 +61,20 @@ int Problem::getDimensions() const {
   return dimensions;
 }
 
-const float* Problem::getPosition(int index) const {
+const double* Problem::getPosition(int index) const {
   return positions[index];
 }
 
-float Problem::distance(int from, int to) const {
+double Problem::distance(int from, int to) const {
   return distances[from][to];
 }
 
 // Helper functions
 
-// Read a comma separated float instead of point sepparated
-float readCommaFloat(FILE* input) {
+// Read a comma separated double instead of point sepparated
+double readCommaFloat(FILE* input) {
   int base, decimal;
   fscanf(input, "%d,", &base);
   int decimal_size = fscanf(input, "%d", &decimal);
-  return float(base) + float(decimal) / float(decimal_size * 100);
+  return double(base) + double(decimal) / double(decimal_size * 100);
 }

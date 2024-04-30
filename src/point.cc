@@ -13,8 +13,8 @@
 
 #include "point.h"
 
-float distanceBetween(int dimensions, const float* point1, const float* point2) {
-  float distance = 0;
+double distanceBetween(int dimensions, const double* point1, const double* point2) {
+  double distance = 0;
   for (int dim = 0; dim < dimensions; dim++) {
     distance += powf(point1[dim] - point2[dim], 2);
   }
@@ -22,7 +22,7 @@ float distanceBetween(int dimensions, const float* point1, const float* point2) 
   return distance;
 }
 
-void printPoint(int dimensions, const float* point) {
+void printPoint(int dimensions, const double* point) {
   printf("[ ");
   for (int d = 0; d < dimensions; d++) {
     printf("%5.2f", point[d]);

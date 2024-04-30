@@ -30,7 +30,7 @@ Solution* Grasp::solve(const Problem* problem, int solution_size) const {
   for (int cur_it = 0; cur_it < iterations; cur_it++) {
     // Initial center of all the points
     Solution* current_result = new Solution(problem);
-    float* center = new float[dimensions];
+    double* center = new double[dimensions];
     for (int dim = 0; dim < dimensions; dim++) {
       center[dim] = 0;
       for (int point = 0; point < size; point++) {
@@ -42,7 +42,7 @@ Solution* Grasp::solve(const Problem* problem, int solution_size) const {
     // Add points to solution
     for (int i = 0; i < solution_size; i++) {
       // Create rcl
-      float rcl_distances[rcl_size];
+      double rcl_distances[rcl_size];
       int rcl_points[rcl_size];
       for (int rclentry = 0; rclentry < rcl_size; rclentry++) {
         rcl_distances[rclentry] = 0;
@@ -51,7 +51,7 @@ Solution* Grasp::solve(const Problem* problem, int solution_size) const {
       // Look for furthest points
       for (int point = 0; point < size; point++) {
         if (current_result->hasPoint(point)) continue;
-        float distance = distanceBetween(dimensions, center,
+        double distance = distanceBetween(dimensions, center,
                                          problem->getPosition(point));
         // Get worst item in rcl
         int rcl_worst_entry = 0;
@@ -78,7 +78,6 @@ Solution* Grasp::solve(const Problem* problem, int solution_size) const {
     }
     delete current_result;
   }
-  best_result->reloadTotalDistance();
   return best_result;
 }
 

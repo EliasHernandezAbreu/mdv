@@ -12,8 +12,8 @@
 #define POINT_H
 
 // Calculates the distance between two points
-float distanceBetween(int dimensions, const float* point1, const float* point2);
+double distanceBetween(int dimensions, const double* point1, const double* point2);
 // Prints a point
-void printPoint(int dimensions, const float* point);
+void printPoint(int dimensions, const double* point);
 
 #endif

@@ -19,7 +19,7 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
   Solution* result = new Solution(problem);
 
   // Initial center of all the points
-  float* center = new float[dimensions];
+  double* center = new double[dimensions];
   for (int dim = 0; dim < dimensions; dim++) {
     center[dim] = 0;
     for (int point = 0; point < size; point++) {
@@ -29,11 +29,11 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
   }
   for (int i = 0; i < solution_size; i++) {
     int longest_distance_point = 0;
-    float longest_distance = -999999;
+    double longest_distance = -999999;
     // Get point furthest from center
     for (int point = 0; point < size; point++) {
       if (result->hasPoint(point)) continue;
-      float distance = distanceBetween(dimensions, center,
+      double distance = distanceBetween(dimensions, center,
                                        problem->getPosition(point));
       if (distance > longest_distance) {
         longest_distance = distance;
@@ -46,6 +46,5 @@ Solution* Greedy::solve(const Problem* problem, int solution_size) const {
       center = result->getCenter();
     }
   }
-  result->reloadTotalDistance();
   return result;
 }

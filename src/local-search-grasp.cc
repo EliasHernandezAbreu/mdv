@@ -31,7 +31,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
   for (int cur_it = 0; cur_it < iterations; cur_it++) {
     // Initial center of all the points
     Solution* current_result = new Solution(problem);
-    float* center = new float[dimensions];
+    double* center = new double[dimensions];
     for (int dim = 0; dim < dimensions; dim++) {
       center[dim] = 0;
       for (int point = 0; point < size; point++) {
@@ -43,7 +43,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
     // Add points to solution
     for (int i = 0; i < solution_size; i++) {
       // Create rcl
-      float rcl_distances[rcl_size];
+      double rcl_distances[rcl_size];
       int rcl_points[rcl_size];
       for (int rclentry = 0; rclentry < rcl_size; rclentry++) {
         rcl_distances[rclentry] = 0;
@@ -52,7 +52,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
       // Look for furthest points
       for (int point = 0; point < size; point++) {
         if (current_result->hasPoint(point)) continue;
-        float distance = distanceBetween(dimensions, center,
+        double distance = distanceBetween(dimensions, center,
                                          problem->getPosition(point));
         // Get worst item in rcl
         int rcl_worst_entry = 0;
@@ -81,7 +81,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
   }
 
   // Improve with local search
-  float best_increment = 1;
+  double best_increment = 1;
   while (best_increment > 0) {
     int best_remove = 0;
     int best_add = 0;
@@ -90,7 +90,7 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
       if (!best_result->hasPoint(remove)) continue;
       for (int add = 0; add < problem->getSize(); add++) {
         if (best_result->hasPoint(add)) continue;
-        float current_increment = -best_result->getTotalDistance();
+        double current_increment = -best_result->getTotalDistance();
         best_result->removePoint(remove);
         best_result->addPoint(add);
         current_increment += best_result->getTotalDistance();
@@ -109,7 +109,6 @@ Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) con
     }
   }
   
-  best_result->reloadTotalDistance();
   return best_result;
 }
 

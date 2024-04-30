@@ -19,7 +19,7 @@
 Solution::Solution(const Problem* problem) {
   this->problem = problem;
   solution_points = new bool[problem->getSize()]();
-  center = new float[problem->getDimensions()]();
+  center = new double[problem->getDimensions()]();
   total_distance = 0;
   size = 0;
 }
@@ -42,7 +42,7 @@ void Solution::print() const {
   printf("Total distance = %.2f\n", total_distance);
 }
 
-float* Solution::getCenter() const {
+double* Solution::getCenter() const {
   return center;
 }
 
@@ -84,12 +84,12 @@ void Solution::removePoint(int index) {
   size--;
 }
 
-float Solution::getTotalDistance() const {
+double Solution::getTotalDistance() const {
   return total_distance;
 }
 
-float Solution::confirmTotalDistance() const {
-  float distance = 0;
+double Solution::confirmTotalDistance() const {
+  double distance = 0;
   for (int from = 0; from < problem->getSize(); from++) {
     if (!hasPoint(from)) continue;
     for (int to = from + 1; to < problem->getSize(); to++) {
@@ -122,15 +122,15 @@ void Solution::copy(const Solution* other) {
   this->problem = other->problem;
   this->size = other->size;
   this->total_distance = other->total_distance;
-  memcpy(this->center, other->center, sizeof(float) * problem->getDimensions());
+  memcpy(this->center, other->center, sizeof(double) * problem->getDimensions());
   // this->size is the amount of points in the solution, solution points has an entry for every point
   memcpy(this->solution_points, other->solution_points, sizeof(bool) * problem->getSize());
 }
 
-float Solution::evaluateMovement(int out, int in) {
+double Solution::evaluateMovement(int out, int in) {
   if (out == in) return 0;
   if (hasPoint(in) || !hasPoint(out)) throw std::runtime_error("Impossible to evaluate");
-  float current_increment = -getTotalDistance();
+  double current_increment = -getTotalDistance();
   removePoint(out);
   addPoint(in);
   current_increment += getTotalDistance();

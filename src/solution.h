@@ -14,7 +14,7 @@
 #include "problem.h"
 
 struct Movement {
-  float increment;
+  double increment;
   int in;
   int out;
 };
@@ -53,13 +53,13 @@ public:
   * Gets the total distance of the solution
   * @returns The total distance
   */
-  float getTotalDistance() const;
+  double getTotalDistance() const;
 
   /**
   * Gets the real total distance of the solution
   * @returns The real total distance
   */
-  float confirmTotalDistance() const;
+  double confirmTotalDistance() const;
 
   /**
    * Reloads the total distance to avoid precission problems
@@ -76,7 +76,7 @@ public:
   * Gets the center of the points belonging to the solution
   * @returns An array with the centers of the points
   */
-  float* getCenter() const;
+  double* getCenter() const;
 
   /**
   * Gets wether the solution has a point or not
@@ -103,7 +103,7 @@ public:
   * @param in The point to add in the movement
   * @returns Its increment
   */
-  float evaluateMovement(int out, int in);
+  double evaluateMovement(int out, int in);
 
   /**
   * Does the given movement()
@@ -113,10 +113,10 @@ public:
 
 private:
   const Problem* problem;
-  float* center;
+  double* center;
   int size;
   bool* solution_points;
-  float total_distance;
+  double total_distance;
 };
 
 # endif

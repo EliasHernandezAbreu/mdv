@@ -41,7 +41,7 @@ public:
   * @param index The index of the point to get the position from
   * @returns The position of a point
   */
-  const float* getPosition(int index) const;
+  const double* getPosition(int index) const;
 
   /**
   * Gets the distance between two points
@@ -49,13 +49,13 @@ public:
   * @param to The point to where
   * @returns The distance between the two points
   */
-  float distance(int from, int to) const;
+  double distance(int from, int to) const;
 
 private:
   int size;
   int dimensions;
-  float** positions;
-  float** distances;
+  double** positions;
+  double** distances;
 };
 
 #endif

@@ -105,7 +105,6 @@ Solution* Tabu::solve(const Problem* problem, int solution_size) const {
     delete[] tabu_table[i];
   }
   delete[] tabu_table;
-  best_solution->reloadTotalDistance();
   return best_solution;
 }
 
@@ -122,7 +121,7 @@ void getTopCandidates(Solution* from_solution, int candidate_size, Movement* can
       if (!from_solution->hasPoint(out) || in == out) continue;
 
       // Evaluate movement and swap if its better than the worst in the candidates
-      float this_increment = from_solution->evaluateMovement(out, in);
+      double this_increment = from_solution->evaluateMovement(out, in);
       int worst_candidate = getWorstCandidate(candidate_size, candidates);
       if (this_increment > candidates[worst_candidate].increment) {
         candidates[worst_candidate].increment = this_increment;
@@ -136,7 +135,7 @@ void getTopCandidates(Solution* from_solution, int candidate_size, Movement* can
 
 int getWorstCandidate(int candidate_size, Movement* candidates) {
   int worst_index = 0;
-  float worst_increment = candidates[worst_index].increment;
+  double worst_increment = candidates[worst_index].increment;
   for (int current_candidate = 0; current_candidate < candidate_size; current_candidate++) {
     if (candidates[current_candidate].increment < worst_increment) {
       worst_index = current_candidate;
