@@ -115,7 +115,7 @@ private:
   const Problem* problem;
   double* center;
   int size;
-  bool* solution_points;
+  char* solution_points;
   double total_distance;
 };
 

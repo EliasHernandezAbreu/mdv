@@ -27,7 +27,7 @@ public:
   * @param solution_size The amount of points to include in the solution
   * @returns The found solution to the problem
   */
-  virtual Solution* solve(const Problem* problem, int solution_size) const = 0;
+  virtual Solution* solve(const Problem* problem, int solution_size) = 0;
 };
 
 #endif

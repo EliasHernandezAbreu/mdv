@@ -13,7 +13,7 @@
 #include "problem.h"
 #include "solution.h"
 
-Solution* Greedy::solve(const Problem* problem, int solution_size) const {
+Solution* Greedy::solve(const Problem* problem, int solution_size) {
   const int dimensions = problem->getDimensions();
   const int size = problem->getSize();
   Solution* result = new Solution(problem);

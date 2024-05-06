@@ -21,7 +21,7 @@ LocalSearchGrasp::LocalSearchGrasp(int iterations, int rcl_size) {
   this->rcl_size = rcl_size;
 }
 
-Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) const {
+Solution* LocalSearchGrasp::solve(const Problem* problem, int solution_size) {
   srand(clock());
   const int dimensions = problem->getDimensions();
   const int size = problem->getSize();

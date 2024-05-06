@@ -1,0 +1,31 @@
+Problema                 n   K  m   z              S                    CPU                  nodos generados
+test/max_div_15_2.txt    15  2  2   0.000000                            0.001000 ms                0
+test/max_div_15_2.txt    15  2  3   0.000000                            0.000000 ms                0
+test/max_div_15_2.txt    15  2  4   0.000000                            0.001000 ms                0
+test/max_div_15_2.txt    15  2  5   0.000000                            0.000000 ms                0
+
+test/max_div_15_3.txt    15  3  2   0.000000                            0.001000 ms                0
+test/max_div_15_3.txt    15  3  3   0.000000                            0.001000 ms                0
+test/max_div_15_3.txt    15  3  4   0.000000                            0.001000 ms                0
+test/max_div_15_3.txt    15  3  5   0.000000                            0.000000 ms                0
+
+test/max_div_20_2.txt    20  2  2   0.000000                            0.001000 ms                0
+test/max_div_20_2.txt    20  2  3   0.000000                            0.001000 ms                0
+test/max_div_20_2.txt    20  2  4   0.000000                            0.001000 ms                0
+test/max_div_20_2.txt    20  2  5   0.000000                            0.000000 ms                0
+
+test/max_div_20_3.txt    20  3  2   0.000000                            0.001000 ms                0
+test/max_div_20_3.txt    20  3  3   0.000000                            0.001000 ms                0
+test/max_div_20_3.txt    20  3  4   0.000000                            0.000000 ms                0
+test/max_div_20_3.txt    20  3  5   0.000000                            0.000000 ms                0
+
+test/max_div_30_2.txt    30  2  2   0.000000                            0.000000 ms                0
+test/max_div_30_2.txt    30  2  3   0.000000                            0.001000 ms                0
+test/max_div_30_2.txt    30  2  4   0.000000                            0.000000 ms                0
+test/max_div_30_2.txt    30  2  5   0.000000                            0.001000 ms                0
+
+test/max_div_30_3.txt    30  3  2   0.000000                            0.001000 ms                0
+test/max_div_30_3.txt    30  3  3   0.000000                            0.001000 ms                0
+test/max_div_30_3.txt    30  3  4   0.000000                            0.000000 ms                0
+test/max_div_30_3.txt    30  3  5   0.000000                            0.000000 ms                0
+

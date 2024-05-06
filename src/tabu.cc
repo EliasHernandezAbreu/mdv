@@ -38,7 +38,7 @@ Tabu::Tabu(int iterations, int rcl_size, int tabu_tenure) {
   this->rcl_size = rcl_size;
 }
 
-Solution* Tabu::solve(const Problem* problem, int solution_size) const {
+Solution* Tabu::solve(const Problem* problem, int solution_size) {
   // Get initial solution from grasp algorithm
   Grasp grasp_solver(iterations, rcl_size);
   Solution* best_solution = grasp_solver.solve(problem, solution_size);

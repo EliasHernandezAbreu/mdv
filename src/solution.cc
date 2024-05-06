@@ -18,7 +18,7 @@
 
 Solution::Solution(const Problem* problem) {
   this->problem = problem;
-  solution_points = new bool[problem->getSize()]();
+  solution_points = new char[problem->getSize()]();
   center = new double[problem->getDimensions()]();
   total_distance = 0;
   size = 0;
@@ -47,18 +47,18 @@ double* Solution::getCenter() const {
 }
 
 bool Solution::hasPoint(int index) const {
-  return solution_points[index];
+  return solution_points[index] > 0;
 }
 
 void Solution::addPoint(int index) {
-  if (solution_points[index]) return;
+  if (solution_points[index] > 0) return;
   for (int p = 0; p < problem->getSize(); p++) {
-    if (!solution_points[p]) continue;
+    if (solution_points[p] == 0) continue;
     total_distance += distanceBetween(problem->getDimensions(), 
                                       problem->getPosition(p),
                                       problem->getPosition(index));
   }
-  solution_points[index] = true;
+  solution_points[index]++;
   for (int d = 0; d < problem->getDimensions(); d++) {
     center[d] *= size;
     center[d] += problem->getPosition(index)[d];
@@ -68,14 +68,14 @@ void Solution::addPoint(int index) {
 }
 
 void Solution::removePoint(int index) {
-  if (!solution_points[index]) return;
+  if (solution_points[index] == 0) return;
   for (int p = 0; p < problem->getSize(); p++) {
     if (!solution_points[p]) continue;
     total_distance -= distanceBetween(problem->getDimensions(), 
                                       problem->getPosition(p),
                                       problem->getPosition(index));
   }
-  solution_points[index] = false;
+  solution_points[index] = 0;
   for (int d = 0; d < problem->getDimensions(); d++) {
     center[d] *= size;
     center[d] -= problem->getPosition(index)[d];
@@ -109,7 +109,7 @@ void Solution::reloadTotalDistance() {
 char* Solution::getPointsString() const {
   char* result = new char[3 * size + 1](); // 2 digits number + space + final null char
   for (int i = 0; i < problem->getSize(); i++) {
-    if (solution_points[i]) {
+    if (solution_points[i] > 0) {
       char tmp[14];
       sprintf(tmp, "%d ", i);
       strcat(result, tmp);

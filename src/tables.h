@@ -21,5 +21,7 @@ void localSearchGraspTable(int test_amount, const char** test_files);
 void graspTable(int test_amount, const char** test_files);
 // Generate tabu search tables
 void tabuTable(int test_amount, const char** test_files);
+// Generate branch and bound search tables
+void bnbTable(int test_amount, const char** test_files);
 
 #endif
