@@ -12,6 +12,7 @@
 #define BNB_NODE
 
 #include "problem.h"
+#include <vector>
 
 class BNBNode {
 public:
@@ -22,6 +23,11 @@ public:
   BNBNode(const Problem* problem);
 
   /**
+   * Creates a bnb node
+   */
+  BNBNode();
+
+  /**
    * Removes the node, deleting all it's children
    */
   ~BNBNode();
@@ -30,39 +36,52 @@ public:
    * Get the lower bound
    * @returns The lower bound
    */
-  double getUpperBound() { return upper_bound; }
+  double getUpperBound() const { return upper_bound; }
 
   /**
    * Get the child amount
    * @returns The child amount
    */
-  double getChildAmount() { return child_count; }
+  double getChildAmount() const { return child_count; }
 
   /**
    * Gets the nodes in the solution
    * @returns The amount of nodes in the solution
    */
-  int getNodeCountInSolution() { return nodes_in_solution; }
+  int getNodeCountInSolution() const { return nodes_in_solution; }
 
   /**
    * Gets the solution
    * @returns The solution
    */
-  char* getPartialSolution() { return partial_solution; }
+  const char* getPartialSolution() const { return partial_solution; }
+
+  /**
+   * Sets the solution and calculates the upper bound
+   * @param new_solution The new solution
+   * @param problem The problem to get info from
+   */
+  void setPartialSolution(char* new_solution, const Problem* problem, int target_solution_size);
 
   /**
    * Expands the node, creating its children
    * @param problem The problem to fetch info from
    * @returns The childs generated
    */
-  BNBNode* expand(const Problem* problem, int target_solution_size);
+  std::vector<BNBNode> expand(const Problem* problem, int target_solution_size);
+
+  /**
+   * Copies another branch and bound node
+   */
+  void operator=(const BNBNode& other);
 
 private:
   double upper_bound;
   int child_count;
   int nodes_in_solution;
-  BNBNode* children;
+  std::vector<BNBNode> children;
   char* partial_solution;
+  int problem_size;
 };
 
 #endif

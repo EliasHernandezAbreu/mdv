@@ -127,6 +127,13 @@ void Solution::copy(const Solution* other) {
   memcpy(this->solution_points, other->solution_points, sizeof(bool) * problem->getSize());
 }
 
+void Solution::copy(const BNBNode* other) {
+  this->size = other->getNodeCountInSolution();
+  this->total_distance = other->getUpperBound();
+  memcpy(this->solution_points, other->getPartialSolution(), sizeof(char) * problem->getSize());
+  // Center left unset! maybe recalculate it?
+}
+
 double Solution::evaluateMovement(int out, int in) {
   if (out == in) return 0;
   if (hasPoint(in) || !hasPoint(out)) throw std::runtime_error("Impossible to evaluate");

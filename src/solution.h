@@ -11,6 +11,7 @@
 #ifndef SOLUTION_H
 #define SOLUTION_H
 
+#include "bnb-node.h"
 #include "problem.h"
 
 struct Movement {
@@ -37,6 +38,12 @@ public:
    * @param other The solution to copy
    */
   void copy(const Solution* other);
+
+  /**
+   * Copies a partial solution
+   * @param other The partial solution to copy
+   */
+  void copy(const BNBNode* other);
 
   /**
   * Prints the solution to the standard output

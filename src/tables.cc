@@ -120,12 +120,13 @@ void tabuTable(int test_amount, const char** test_files) {
 
 void bnbTable(int test_amount, const char** test_files, char branch_mode, char lower_bound_mode, const char* save_to) {
   // Can't use polymorphism with this one since we need the generated nodes amount
-  BranchNBound* solver = new BranchNBound(branch_mode, lower_bound_mode);
+  BranchNBound* solver = new BranchNBound(lower_bound_mode, branch_mode);
   FILE* out = fopen(save_to, "w");
   fprintf(out, UBOLD "%-24s %-3s %-2s %-3s %-14s %-20s %-16s    %16s" CLEAR "\n",
           "Problema", "n", "K", "m", "z", "S", "CPU", "nodos generados");
   for (int i = 0; i < test_amount; i++) {
     for (int m = 2; m <= 5; m++) {
+      printf("starting problem %s\n", test_files[i]);
     Problem test_problem = Problem(test_files[i]);
     long start_time = clock();
     Solution* solution = solver->solve(&test_problem, m);
