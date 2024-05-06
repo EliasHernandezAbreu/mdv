@@ -12,6 +12,7 @@
 #include <ctime>
 
 #include "algorithm.h"
+#include "bnb-node.h"
 #include "grasp.h"
 #include "greedy.h"
 #include "colors.h"
@@ -117,10 +118,10 @@ void tabuTable(int test_amount, const char** test_files) {
   }
 }
 
-void bnbTable(int test_amount, const char** test_files) {
+void bnbTable(int test_amount, const char** test_files, char branch_mode, char lower_bound_mode, const char* save_to) {
   // Can't use polymorphism with this one since we need the generated nodes amount
-  BranchNBound* solver = new BranchNBound(LOWER_BOUND_MODE_GREEDY, BRANCHING_STRATEGY_LOWEST_UPPER_BOUND);
-  FILE* out = fopen("table-bnb.txt", "w");
+  BranchNBound* solver = new BranchNBound(branch_mode, lower_bound_mode);
+  FILE* out = fopen(save_to, "w");
   fprintf(out, UBOLD "%-24s %-3s %-2s %-3s %-14s %-20s %-16s    %16s" CLEAR "\n",
           "Problema", "n", "K", "m", "z", "S", "CPU", "nodos generados");
   for (int i = 0; i < test_amount; i++) {
@@ -147,6 +148,12 @@ void allTables(int test_amount, const char** test_files) {
   localSearchGraspTable(test_amount, test_files);
   puts(NEG "tabu search..." CLEAR);
   tabuTable(test_amount, test_files);
-  puts(NEG "branch and bound..." CLEAR);
-  bnbTable(test_amount, test_files);
+  puts(NEG "branch and bound depth greedy..." CLEAR);
+  bnbTable(test_amount, test_files, BRANCHING_STRATEGY_DEEPEST_NODE, LOWER_BOUND_MODE_GREEDY, "bnb-depth-greedy.txt");
+  puts(NEG "branch and bound depth grasp..." CLEAR);
+  bnbTable(test_amount, test_files, BRANCHING_STRATEGY_DEEPEST_NODE, LOWER_BOUND_MODE_GRASP, "bnb-depth-grasp.txt");
+  puts(NEG "branch and bound bound greedy..." CLEAR);
+  bnbTable(test_amount, test_files, BRANCHING_STRATEGY_LOWEST_UPPER_BOUND, LOWER_BOUND_MODE_GREEDY, "bnb-bound-greedy.txt");
+  puts(NEG "branch and bound bound grasp..." CLEAR);
+  bnbTable(test_amount, test_files, BRANCHING_STRATEGY_LOWEST_UPPER_BOUND, LOWER_BOUND_MODE_GRASP, "bnb-bound-grasp.txt");
 }
