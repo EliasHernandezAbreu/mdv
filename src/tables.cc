@@ -149,6 +149,8 @@ void allTables(int test_amount, const char** test_files) {
   localSearchGraspTable(test_amount, test_files);
   puts(NEG "tabu search..." CLEAR);
   tabuTable(test_amount, test_files);
+  puts(NEG "branch and bound depth none..." CLEAR);
+  bnbTable(test_amount, test_files, BRANCHING_STRATEGY_DEEPEST_NODE, LOWER_BOUND_MODE_NONE, "bnb-depth-none.txt");
   puts(NEG "branch and bound depth greedy..." CLEAR);
   bnbTable(test_amount, test_files, BRANCHING_STRATEGY_DEEPEST_NODE, LOWER_BOUND_MODE_GREEDY, "bnb-depth-greedy.txt");
   puts(NEG "branch and bound depth grasp..." CLEAR);

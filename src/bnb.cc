@@ -35,6 +35,8 @@ Solution* BranchNBound::solve(const Problem* problem, int solution_size) {
     Solution* tmp = Grasp(100, 3).solve(problem, solution_size);
     lower_bound = tmp->getTotalDistance();
     delete tmp;
+  } else if (lower_bound_mode == LOWER_BOUND_MODE_NONE) {
+    lower_bound = -1;
   } else {
     printf("lower bound mode not recognized: %d\n", lower_bound_mode);
     exit(1);
